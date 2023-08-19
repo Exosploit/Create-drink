@@ -1,6 +1,9 @@
 .denyselect {
     user-select: none;
+    -webkit-user-drag: none;
 }
+
+* { border: 0px solid red; }
 
 .center-content {
     text-align: center;
@@ -8,10 +11,10 @@
 }
 
 body {
-   background-color: rgb(255, 255, 255); 
+   background-color: rgb(255, 255, 250); 
    margin: 0;
    padding: 0;
-   height: 1500px;
+   height: 1470px;
    font-family: 'Inter';
 }
 
@@ -22,31 +25,69 @@ body {
     display: flex;
 }
 
-.main header {
+.main .header {
     top: 0;
-    background-color: rgba(0, 149, 238, 0.07);
-    backdrop-filter: blur(5px); 
+    background-color: rgba(81, 113, 131, 0.07);
+    backdrop-filter: blur(7px); 
     color: rgb(0, 25, 28);
     position: fixed;
+    box-sizing: border-box;
     width: 100%;
-    padding: 24px 0;
-    text-align: center;
+    padding: 24px 104px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
 }
 
-.main header a {
+.main .header a {
     color: black;   
     font-size: 20;
-    margin: 0 10px;
-    align-items: center;
+    margin: 0 10px; 
+    text-decoration: none;
 }
 
-.main header a:hover {
-    color: rgb(90, 90, 90);
+.main .header a:hover {
+    color: rgb(130, 130, 130);
     cursor: pointer;
 }
+
+.header .logo img {
+    height: 48px;
+    width: 64px;
+    align-items: left;
+    justify-content: left;
+}
+
+.logo {
+    float: left;
+}
+
+.settings i {
+    transition: 0.5s;
+}
+
+.settings:hover i {
+    cursor: pointer;
+    transform: translate(0px, -1px) rotate(118deg);
+    color: #d3c67d;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: 1em 1em;
+    border-radius: 6px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.342);
+    text-align: center;
+    margin-right: 1em;
+}
+
+.settings:hover .dropdown {
+    display: block;
+  }
 
 .design {
     display: inline-block;
@@ -55,7 +96,7 @@ body {
 
 .design a {
     background: rgb(135,118,53);
-    border-radius: 9px;
+    border-radius: 6px;
     font-size: 27px;
     background: linear-gradient(90deg, rgb(187, 165, 78) 14%, rgba(255,237,137,1) 100%);
     display: inline-block;
@@ -69,11 +110,9 @@ body {
 
 .design a:hover {
     background: linear-gradient(90deg, rgb(197, 175, 88) 14%, rgba(255,242,142,1) 100%);
+    transform: scale(1.02);
     cursor: pointer;  
 }
-
-
-
 
 .slogan {
     font-size: 76px;
@@ -82,6 +121,12 @@ body {
     text-align: center;
     display: flex;
     flex-direction: row;
+}
+
+.start {
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
 }
 
 .preview {
@@ -97,7 +142,66 @@ body {
 
 .line {
     background-color: rgb(225, 225, 225);
-    height: 2px;
+    height: 1px;
     width: 40em;
     display: inline-block;
+}
+
+.info {
+    color: #3DAEAE;
+}
+
+.line2 {
+    background-color: rgb(225, 225, 225);
+    height: 1px;
+    width: 2em;
+    display: inline-block;
+}
+
+.step-container {
+    margin-top: -2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step {
+    color: #3DAEAE;
+    font-size: 35px;
+    font-weight: 600;
+    width: 450px;
+}
+
+.title {
+    margin-top: 0.5em;
+}
+
+.step .description {
+    color: rgb(134, 150, 146);
+    font-size: 17px;
+    margin-top: 0.5em;
+}
+
+.step-container div svg {
+    margin-top: 3em;
+}
+
+.stepimg {
+    background: linear-gradient(30deg, rgb(21, 102, 102) 14%, rgb(61, 174, 174) 100%);
+    width: 125px;
+    height: 125px;
+    border-radius: 62.5px;
+    margin: auto;
+}
+
+.stepimg svg {
+    display: grid;
+    place-items: center;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    bottom: 0;
 }
