@@ -59,150 +59,153 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Get each filter element by its ID
+const nonCarbonatedFilter = document.getElementById('non-carbonated');
+const alcoholicFilter = document.getElementById('alcoholic');
+const carbonatedFilter = document.getElementById('carbonated');
+const nonAlcoholicFilter = document.getElementById('non-alcoholic');
 
-// carb/alc 0 = no; 1 = yes; 2 = both;
+// Define click event handling functions for each filter
+function nonCarbonatedFilterClick() {
+    // Add your custom logic for the non-carbonated filter here
+}
+
+function alcoholicFilterClick() {
+    // Add your custom logic for the alcoholic filter here
+}
+
+function carbonatedFilterClick() {
+    // Add your custom logic for the carbonated filter here
+}
+
+function nonAlcoholicFilterClick() {
+    // Add your custom logic for the non-alcoholic filter here
+}
+
+// Attach the appropriate click event handlers to each filter
+nonCarbonatedFilter.addEventListener('click', nonCarbonatedFilterClick);
+alcoholicFilter.addEventListener('click', alcoholicFilterClick);
+carbonatedFilter.addEventListener('click', carbonatedFilterClick);
+nonAlcoholicFilter.addEventListener('click', nonAlcoholicFilterClick);
+
+const styleContainers = document.querySelectorAll('.style-container');
+
+styleContainers.forEach((container) => {
+  const styleDivs = container.querySelectorAll('.style');
+
+  styleDivs.forEach((div) => {
+    div.addEventListener('click', () => {
+      styleDivs.forEach((div) => {
+        div.classList.remove('active');
+      });
+
+      // ADD SOME TYPE OF MEMORY OF WHICH IS SELECTED
+      div.classList.add('active');
+    });
+  });
+});
+
+
+const styleDivs = document.querySelectorAll('.drinks');
+
+styleDivs.forEach((div) => {
+  div.addEventListener('click', () => {
+    styleDivs.forEach((div) => {
+      div.classList.remove('active');
+    });
+
+    // ADD SOME TYPE OF MEMORY OF WHICH IS SELECTED
+    div.classList.add('active');
+  });
+});
+
+// carbonated/alcoholic 0 = no; 1 = yes; 2 = both;
 // size 1 = small; 2 = medium; 3 = large;
 
-class appliedFilters {
-    relev = true;
-    price = false;
-    volume = false;
-    ppl = false;
-    carb = 2;
-    alc = 2;
-    minlitres = 0;
-    maxlitres = 2000;
-    minprice = 0;
-    minprice = 299;
-    small = true;
-    medium = true;
-    large = true;
+const appliedFilters = {
+    relevance: true,
+    price: false,
+    volume: false,
+    ppl: false,
+    minprice: 1,
+    maxprice: 11,
+    minlitres: 1,
+    maxlitres: 7,
+    carbonated: 2,
+    alcoholic: 2,
+    small: true,
+    medium: true,
+    large: true
+};
+
+// FILTERING SYSTEM //
+
+class DrinkType {
+
+    constructor(relevance, litres, price, carbonated, alcoholic, size) { 
+        this.relevance = relevance;
+        this.litres = litres;
+        this.price = price;
+        this.ppl = price / litres;
+        this.carbonated = carbonated;
+        this.alcoholic = alcoholic;
+        this.size = size;
+    }
+
 }
 
-// Cans
-
-class smallCan {
-    relev = 0;
-    litres = 0.1;
-    price = 0.19;
-    ppl = price / litres;
-    carb = 2;
-    alc = 2;
-    size = 1;
+function hideElement(elementID) {
+        var elementToHide = document.getElementById(elementID);
+        elementToHide.style.display = 'none';
 }
 
-class mediumCan {
-    relev = 1;
-    litres = 0.25;
-    price = 0.39;
-    ppl = price / litres;
-    carb = 2;
-    alc = 2;
-    size = 1;
+function showElement(elementID) {
+    var elementToHide = document.getElementById(elementID);
+    elementToHide.style.display = 'flex';
 }
 
-class largeCan {
-    relev = 2;
-    litres = 0.5;
-    price = 0.49;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 2;
-}
+function filter(drinks, appliedFilters)
+{
+    return drinks.filter( drink =>
+    {
+        let matches = true
 
-// Bottles
+        if ((appliedFilters.minlitres <= drink.litres && appliedFilters.maxlitres >= drink.litres) &&
+        (appliedFilters.minprice <= drink.price && appliedFilters.maxprice >= drink.price) &&
+        (appliedFilters.small == true && drink.size == 1) || 
+        (appliedFilters.medium == true && drink.size == 2) || 
+        (appliedFilters.large == true && drink.size == 3) &&
+        (appliedFilters.carbonated == drink.carbonated) &&
+        (appliedFilters.alcoholic == drink.alcoholic)) 
+        {
+            showElement() // GET ID AND INSERT
+        }
+        else {
+            hideElement() // GET ID AND INSERT
+        };
 
-class waterBottle {
-    relev = 3;
-    litres = 0.75;
-    price = 0.49;
-    ppl = price / litres;
-    carb = 0;
-    alc = 0;
-    size = 2;
-}
+        matches = matches && drink.size === options.size
 
-class sodaBottle {
-    relev = 4;
-    litres = 0.5;
-    price = 0.69;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 2;
-}
+        return matches
+    }
+    )
+};
 
-class glassBottle {
-    relev = 5;
-    litres = 0.5;
-    price = 1.19;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 2;
-}
 
-// Large Bottles
+// CARBONATED/ALCOHOLIC 0 = no; 1 = yes; 2 = both
+// RELEVANCE, LITRES, PRICE, CARBONATED, ALCOHOLIC, SIZE //
+let smallCan = new DrinkType(0, 0.1, 0.19, 2, 2, 1)
+let mediumCan = new DrinkType(1, 0.25, 0.39, 2, 2, 1)
+let largeCan = new DrinkType(2, 0.5, 0.49, 2, 0, 2)
 
-class largeBottle {
-    relev = 6;
-    litres = 1;
-    price = 1.19;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 3;
-}
+let waterBottle = new DrinkType(3, 0.75, 0.49, 0, 0, 2)
+let sodaBottle = new DrinkType(4, 0.5, 0.69, 2, 0, 2)
+let glassBottle = new DrinkType(5, 0.5, 1.19, 2, 0, 2)
 
-class xlargeBottle {
-    relev = 7;
-    litres = 1.5;
-    price = 1.59;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 3;
-}
+let bigBottle = new DrinkType(6, 1, 1.19, 2, 0, 3)
+let largeBottle = new DrinkType(7, 1.5, 1.59, 2, 0, 3)
+let hugeBottle = new DrinkType(8, 2, 1.79, 2, 0, 3)
 
-class xxlargeBottle {
-    relev = 8;
-    litres = 2;
-    price = 1.79;
-    ppl = price / litres;
-    carb = 2;
-    alc = 0;
-    size = 3;
-}
-
-// Alcoholics
-
-class beerBottle {
-    relev = 9;
-    litres = 0.5;
-    price = 1.39;
-    ppl = price / litres;
-    carb = 2;
-    alc = 1;
-    size = 3;
-}
-
-class whineBottle {
-    relev = 10;
-    litres = 1;
-    price = 2.39;
-    ppl = price / litres;
-    carb = 2;
-    alc = 1;
-    size = 3;
-}
-
-class champagneBottle {
-    relev = 11;
-    litres = 1;
-    price = 2.99;
-    ppl = price / litres;
-    carb = 2;
-    alc = 1;
-    size = 3;
-}
+let beerBottle = new DrinkType(9, 0.5, 1.39, 2, 1, 2)
+let whineBottle = new DrinkType(10, 1, 2.39, 2, 1, 3)
+let champagneBottle = new DrinkType(11, 1, 2.99, 2, 1, 3)

@@ -313,20 +313,25 @@ body {
 }
 
 .style {
-    border: 1px solid #d3c67d;;
+    border: 2px solid rgb(205, 205, 205);
     height: 3.5em;
     width: 45%;
     border-radius: 3px;
+    background-size: cover;
 }
 
-.style:hover {
+.style.active {
+    border: 2px solid #d3c67d;
+}
+
+.style:not(.active):hover {
     cursor: pointer;
-    border: 1px solid #3DAEAE;
+    border: 2px solid #3DAEAE;
 }
 
 .drinks-container {
-    width: 40.5em;
-    height: 35.5em;
+    width: 40.8em;
+    height: 35.9em;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -339,14 +344,18 @@ body {
 .drinks {
     width: 13em;
     height: 8em;
-    border: 1px solid rgb(205, 205, 205);
+    border: 2px solid rgb(205, 205, 205);
     border-radius: 3px;
     position: relative;
 }
 
-.drinks:hover {
+.drinks.active {
+    border: 2px solid #d3c67d;
+}
+
+.drinks:not(.active):hover {
     cursor: pointer;
-    border: 1px solid #3DAEAE;
+    border: 2px solid #3DAEAE;
 }
 
 .drinks .top {

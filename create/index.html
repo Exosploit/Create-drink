@@ -7,7 +7,7 @@
 <head>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<body class="main">
+<body class="main"
     <div class="error-message" id="error-message"></div>
     <div class="header denyselect">
         <div class="logo">
@@ -64,22 +64,22 @@
                           </div>
                           <div class="slidecontainer">
                               To<input type="range" min="1" max="7" value="7" class="slider" id="myRange">
-                            </div>
+                          </div>
                     </div>
 
                     <div class="filterby">
                         <div class="filtertitle">Filter by</div>
                         <div class="filters-container">
-                            <div class="filters active">
+                            <div class="filters active" id="non-carbonated">
                                 Non-carbonated
                             </div>
-                            <div class="filters active">
+                            <div class="filters active" id="alcoholic">
                                 Alcoholic
                             </div>
-                            <div class="filters active">
+                            <div class="filters active" id="carbonated">
                                 Carbonated
                             </div>
-                            <div class="filters active">
+                            <div class="filters active" id="non-alcoholic">
                                 Non-alcoholic
                             </div>
                         </div>
@@ -110,14 +110,16 @@
             </div>
     
             <div class="drinks-container denyselect">
-                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                <div class="drinks" id="1" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
                     <div class="top">
                         <div class="price">$0.19</div>
                         <div class="fees">Potential fees</div>
                     </div>
                     <div class="bottom">
-                        <div class="volume right">100ml</div></div>
+                        <div class="volume right">100ml</div>
                     </div>
+                </div>
+                    
                 <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
                     <div class="top">
                         <div class="price">$0.39</div>
@@ -198,7 +200,7 @@
                     </div>
                     <div class="bottom">
                         <div class="volume right">1 litre</div></div>
-                    </div>
+                    </div> -->
             </div>
             
 
@@ -212,13 +214,9 @@
                     <div class="style-selector">
                         <div>Head</div>
 
-                        <div class="style-container">
-                            <div class="style">
-                                <img src="">
-                            </div>
-                            <div class="style">
-                                <img src="st">
-                            </div>
+                        <div class="style-container" id="style-container1">
+                            <div class="style active" style="background-image: url(https://img2.cgtrader.com/items/2166796/91ab14e3a7/large/slim-beverage-can-ending-with-lid-3d-model-obj-fbx.jpg);"></div>
+                            <div class="style" style="background-image: url(https://img2.cgtrader.com/items/2166796/91ab14e3a7/large/slim-beverage-can-ending-with-lid-3d-model-obj-fbx.jpg);"></div>
                         </div>
                         
                     </div>
@@ -226,13 +224,9 @@
                     <div class="style-selector">
                         <div>Neck</div>
 
-                        <div class="style-container">
-                            <div class="style">
-                                <img src="">
-                            </div>
-                            <div class="style">
-                                <img src="st">
-                            </div>
+                        <div class="style-container" id="style-container2">
+                            <div class="style active" style="background-image: url(https://img2.cgtrader.com/items/2166796/91ab14e3a7/large/slim-beverage-can-ending-with-lid-3d-model-obj-fbx.jpg);"></div>
+                            <div class="style" style="background-image: url(https://img2.cgtrader.com/items/2166796/91ab14e3a7/large/slim-beverage-can-ending-with-lid-3d-model-obj-fbx.jpg);"></div>
                         </div>
                         
                     </div>
@@ -240,8 +234,6 @@
                 </div>
             </div>
 
-
-        </div>
         
     
     </div>
