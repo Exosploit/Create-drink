@@ -62,14 +62,40 @@ body {
     float: left;
 }
 
-.settings i {
+.settings #cog {
     transition: 0.5s;
 }
 
-.settings:hover i {
+.settings:hover #cog {
     cursor: pointer;
     transform: translate(0px, -1px) rotate(118deg);
     color: #d3c67d;
+}
+
+.settings a {
+    top: 0;
+}
+
+.login {
+    padding: 10px 0;
+    width: 90px;
+    background-color: white;
+    border:2px solid #d3c67d;
+    border-radius: 3px;
+    color: #d3c67d;
+    font-weight: 600;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.13);
+}
+
+.signup {
+    padding: 10px 0;
+    width: 90px;
+    background-color: #3DAEAE;
+    border:2px solid #379b9b;
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.13);
 }
 
 .dropdown {
@@ -83,6 +109,7 @@ body {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.342);
     text-align: center;
     margin-right: 1em;
+    font-size: 13px;
 }
 
 .settings:hover .dropdown {
@@ -127,6 +154,7 @@ body {
     font-weight: 600;
     color: white;
     text-decoration: none;
+    vertical-align: middle;
 }
 
 .preview {
@@ -196,7 +224,6 @@ body {
 
 .stepimg svg {
     display: grid;
-    place-items: center;
 }
 
 .footer {

@@ -1,0 +1,42 @@
+SIZES
+-----
+Small can
+Medium can
+Large can
+
+Juice bottle
+Small soda bottle
+glass soda bottle
+
+1L bottle
+1.5L bottle
+2L bottle
+
+Beer bottle
+champagne bottle
+wine bottle
+
+
+SORT BY
+acending (0 - 9) / decending (9 - 0)
+------- 
+PRICE
+VOLUME
+PRICE PER LITRE
+
+FILTERS
+-------
+type
+carbonated
+non-carbonated
+alcoholic
+non-alcoholic
+size (small, medium, large)
+
+SLIDER FILTERS
+--------------
+price range
+volume
+
+
+right options for quick customize on can like type of cork and bottle neck

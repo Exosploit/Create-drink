@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <body class="main">
-
+    <div class="error-message" id="error-message"></div>
     <div class="header denyselect">
         <div class="logo">
             <img class="denyselect" src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.png">
@@ -27,6 +27,226 @@
         </div>
     </div>
 
+    <div class="center-content">
+        <div class="title">Customize your drink</div>
+        <div class="choice-container">
+    
+            <div class="filter">
+                <div class="container denyselect">
+
+                    <div class="sort">
+                        <div>Sort by</div>
+                        <div class="sortby denyselect">
+                            <select>
+                                <option value="0">Relevance</option>
+                                <option value="1">Price</option>
+                                <option value="2">Volume</option>
+                                <option value="3">Litre cost</option>
+                              </select>
+                            
+                        </div>
+                    </div>
+
+                    <div class="sliderfilter">
+                        <div>Price</div>
+                        <div class="slidecontainer">
+                            From<input type="range" min="1" max="11" value="1" class="slider" id="myRange">
+                          </div>
+                          <div class="slidecontainer">
+                              To<input type="range" min="1" max="11" value="11" class="slider" id="myRange">
+                            </div>
+                    </div>
+
+                    <div class="sliderfilter">
+                        <div>Volume</div>
+                        <div class="slidecontainer">
+                            From<input type="range" min="1" max="7" value="1" class="slider" id="myRange">
+                          </div>
+                          <div class="slidecontainer">
+                              To<input type="range" min="1" max="7" value="7" class="slider" id="myRange">
+                            </div>
+                    </div>
+
+                    <div class="filterby">
+                        <div class="filtertitle">Filter by</div>
+                        <div class="filters-container">
+                            <div class="filters active">
+                                Non-carbonated
+                            </div>
+                            <div class="filters active">
+                                Alcoholic
+                            </div>
+                            <div class="filters active">
+                                Carbonated
+                            </div>
+                            <div class="filters active">
+                                Non-alcoholic
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filterby">
+                        <div class="filtertitle">Size</div>
+                        <div class="filters-container-size">
+                            <div class="filters-size active">
+                                Small
+                            </div>
+                            <div class="filters-size active">
+                                Medium
+                            </div>
+                            <div class="filters-size active">
+                                Large
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contine-container">
+                        <a class="continue">
+                            Continue
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="drinks-container denyselect">
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$0.19</div>
+                        <div class="fees">Potential fees</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">100ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$0.39</div>
+                        <div class="fees">Potential fees</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">250ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$0.49</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">500ml</div></div>
+                    </div>  
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$0.39</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">750ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$0.69</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">500ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$1.19</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">500ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$1.19</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">1 litre</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$1.59</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">1.5 litres</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$1.79</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">2 litres</div></div>
+                    </div>  
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$1.39</div>
+                        <div class="fees">Additional fees</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">500ml</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$2.39</div>
+                        <div class="fees">Additional fees</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">1 litre</div></div>
+                    </div>
+                <div class="drinks" style="background-image: url(https://images-public.smartmockups.com/mockups/qYV3e4UjAh_30aHLl488xg_pr_en.jpg?auto=compress&crop=center&fit=crop&ixlib=react-9.0.2&h=274&q=38&dpr=1); background-size: contain;">
+                    <div class="top">
+                        <div class="price">$2.99</div>
+                        <div class="fees">Additional fees</div>
+                    </div>
+                    <div class="bottom">
+                        <div class="volume right">1 litre</div></div>
+                    </div>
+            </div>
+            
+
+            <div class="styles">
+                <div class="container denyselect">
+
+                    <div class="sort">
+                        <div>Style</div>
+                    </div>
+
+                    <div class="style-selector">
+                        <div>Head</div>
+
+                        <div class="style-container">
+                            <div class="style">
+                                <img src="">
+                            </div>
+                            <div class="style">
+                                <img src="st">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="style-selector">
+                        <div>Neck</div>
+
+                        <div class="style-container">
+                            <div class="style">
+                                <img src="">
+                            </div>
+                            <div class="style">
+                                <img src="st">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        
+    
+    </div>
+    <script src="script.js"></script>
+</body>
     
     <div class="footer">
         Copyright © CDAS AB, All rights reserved.
