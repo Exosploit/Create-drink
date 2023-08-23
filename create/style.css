@@ -110,7 +110,7 @@ body {
 .filter {
     background-color: rgb(243, 243, 243);
     width: 12em;
-    height: 27em;
+    height: fit-content;
     border-radius: 10px;
     margin-right: 1em;
     text-align: left;
