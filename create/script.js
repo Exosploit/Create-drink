@@ -93,11 +93,12 @@ document.addEventListener('DOMContentLoaded', function filter() {
         notalcoholic: true, /* reverse from carb except if all is on */
         small: true,
         medium: true,
-        large: true
+        large: true,
+        showall: true
     };
 
     const drinksIsFilteredCondition = (appliedFilters, drink) => 
-    (appliedFilters.minlitres <= drink.litres && appliedFilters.maxlitres >= drink.litres) &&
+    ((appliedFilters.minlitres <= drink.litres && appliedFilters.maxlitres >= drink.litres) &&
     (appliedFilters.minprice <= drink.price && appliedFilters.maxprice >= drink.price) &&
     ((appliedFilters.small && drink.size === 1) || 
     (appliedFilters.medium && drink.size === 2) || 
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function filter() {
     ((appliedFilters.carbonated && drink.carbonated) || 
     (appliedFilters.notcarbonated && drink.notcarbonated)) && 
     ((appliedFilters.alcoholic && drink.alcoholic) || 
-    (appliedFilters.notalcoholic && drink.notalcoholic));
+    (appliedFilters.notalcoholic && drink.notalcoholic)) || showall == true);
     
     // CARBONATED/ALCOHOLIC 0 = no; 1 = yes; 2 = both //
     // RELEVANCE, LITRES, PRICE, SIZE, CARBONATED, ALCOHOLIC, NOT CARBONATED, NOT ALCOHOLIC //
