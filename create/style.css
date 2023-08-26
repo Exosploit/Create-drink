@@ -156,6 +156,13 @@ body {
     margin: 1em 0 0 0;
 }
 
+.reset {
+    color: rgb(168, 108, 108);
+    cursor: pointer;
+    margin-left: 0.5em;
+    font-size: 10px;
+}
+
 .slidecontainer {
     text-align: right;
     color: rgb(117, 117, 117);
@@ -382,7 +389,8 @@ body {
 .drinks .fees {
     background-color: rgba(192, 137, 19, 0.75);
     color: white;
-    width: 75px;
+    width: fit-content;
+    padding: 0 0.3em;
     height: 13px;
     margin: 3px 0 0 3px;
     border-radius: 2px;
