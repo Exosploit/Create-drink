@@ -120,7 +120,6 @@ body {
     margin: 2em 1.5em 1em 1.5em;
     font-size: 14px;
     font-weight: 600;
-    color: rgb(63, 63, 63);
 }
 
 .sort {
@@ -139,13 +138,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
-.sortby i{
-    text-align: right;
-}
-
-.sortby:hover {
+.sortby option {
+    border-radius: 0;
     cursor: pointer;
 }
 
@@ -166,6 +163,12 @@ body {
 .slidecontainer {
     text-align: right;
     color: rgb(117, 117, 117);
+}
+
+.valuecontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .sliderfilter .slider {
@@ -200,7 +203,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    align-items: left;
     column-gap: 2px;
     row-gap: 3px;
 }
@@ -267,22 +269,39 @@ body {
 .contine-container {
     display: flex;
     margin-top: 1em;
+    justify-content: space-between;
 }
 
 .continue {
     background-color: #d3c67d;
     color: white;
     border-radius: 4px;
-    width: 100%;
+    width: 76%;
     display: inline-block;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
-    padding: 0.3em 0;
+    padding: 0.4em 0;
 }
 
 .continue:hover {
     cursor: pointer;
-    transform: scale(1.01);
+    transform: scale(1.015);
+}
+
+.resetall {
+    background-color: #da897f;
+    color: white;
+    border-radius: 4px;
+    width: 21%;
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    padding: 0.4em 0;
+}
+
+.resetall:hover {
+    cursor: pointer;
+    transform: scale(1.015);
 }
 
 .container .title {
@@ -376,14 +395,21 @@ body {
     position: absolute;
 }
 
-.drinks .price {
+.price {
     background-color: rgba(48, 182, 48, 0.75);
     color: white;
-    width: 40px;
     height: 13px;
     margin: 3px 0 0 3px;
     border-radius: 2px;
     font-size: 10px;
+    text-align: center;
+    width: fit-content;
+    padding: 0 4px;
+    font-weight: 100;
+}
+
+.valuecontainer .price {
+    background-color: #ddd2d2;
 }
 
 .drinks .fees {
@@ -397,14 +423,18 @@ body {
     font-size: 10px;
 }
 
-.drinks .volume {
+.volume {
     background-color: rgba(68, 142, 211, 0.75);
     color: white;
-    width: 40px;
+    padding: 0 3px;
     height: 13px;
     margin: 0 0 3px 3px;
     border-radius: 2px;
     font-size: 10px;
+    text-align: center;
+    width: fit-content;
+    padding: 0 4px;
+    font-weight: 100;
 }
 
 .center-content {
