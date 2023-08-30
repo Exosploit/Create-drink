@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
     activeFilters.forEach(filter => filtersContainer.appendChild(filter));
     inactiveFilters.forEach(filter => filtersContainer.appendChild(filter));
 } */
+
 document.addEventListener('DOMContentLoaded', function() {
-    const filtersContainer = document.querySelector('.filters-container-size');
     const filterElements = Array.from(document.querySelectorAll('.filters-size'));
 
     filterElements.forEach(filter => {
@@ -173,15 +173,37 @@ document.addEventListener('DOMContentLoaded', function filter() {
     const maxVolumeSlider = document.getElementById('maxvolume');
     const resetPriceButton = document.getElementById('resetprice');
     const resetVolumeButton = document.getElementById('resetvolume');
-    
+    const resetAllButton = document.getElementById('reset');
 
-    // FIX THIS!
+    const rMaxPrice = "$2.99"
+    const rMinVolume = "100ml"
+    const rMaxVolume = "2 litres"
+    
+    function getMinPrice(appliedFilters) {
+        const minPriceLookup = {
+            1: "$0.19",
+            2: "$0.39",
+            3: "$0.49",
+            4: "$0.69",
+            5: "$1.19",
+            6: "$1.39",
+            7: "$1.59",
+            8: "$1.79",
+            9: "$2.39",
+            10: "$2.99"
+        };
+    
+        return minPriceLookup[appliedFilters.minprice] || "default value";
+    }
+
+    const rMinPrice = getMinPrice(appliedFilters);
+    console.log(rMinPrice);
+
+
     function showAllClick() {
         appliedFilters.showall = !appliedFilters.showall
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
-
-    // WORKS
     
     function alcoholicFilterClick() {
         appliedFilters.alcoholic = !appliedFilters.alcoholic;
@@ -212,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function filter() {
     
     function minPriceChanged() {
         appliedFilters.minprice = minPriceSlider.value;
+        document.getElementById("pricefrom").innerHTML = appliedFilters.price.value;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
@@ -221,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function filter() {
     }
 
     function minVolumeChanged() {
+        getMinPrice()
         appliedFilters.minlitres = minVolumeSlider.value;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
@@ -247,6 +271,43 @@ document.addEventListener('DOMContentLoaded', function filter() {
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
     
+    
+    function resetAll() {
+        const filterSizeElements = Array.from(document.querySelectorAll('.filters-size'));
+
+        appliedFilters.relevance = true
+        appliedFilters.price = false
+        appliedFilters.volume = false
+        appliedFilters.ppl = false
+        appliedFilters.minprice = 1
+        appliedFilters.maxprice = 10
+        appliedFilters.minlitres = 1
+        appliedFilters.maxlitres = 7
+        appliedFilters.carbonated = true
+        appliedFilters.alcoholic = false
+        appliedFilters.notcarbonated = false
+        appliedFilters.notalcoholic = true
+        appliedFilters.small = true
+        appliedFilters.medium = true
+        appliedFilters.large = true
+        appliedFilters.showall = true
+
+        filterSizeElements.forEach(filter => {
+            filter.classList.add('active')
+        });
+
+        showAllButton.classList.add("active")
+        carbonatedFilterButton.classList.remove("active")
+        alcoholicFilterButton.classList.remove("active")
+        
+        minPriceSlider.value = 1
+        maxPriceSlider.value = 11
+        minVolumeSlider.value = 1
+        maxVolumeSlider.value = 7
+
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+    
 
 
     // Attach the appropriate click event handlers to each filter
@@ -262,6 +323,7 @@ document.addEventListener('DOMContentLoaded', function filter() {
     maxVolumeSlider.addEventListener('input', maxVolumeChanged);
     resetPriceButton.addEventListener('click', resetPrice);
     resetVolumeButton.addEventListener('click', resetVolume);
+    resetAllButton.addEventListener('click', resetAll);
 });
 
 // Get each filter element by its ID
