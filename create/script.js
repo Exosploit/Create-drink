@@ -38,9 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     filterElements.forEach(filter => {
         filter.addEventListener('click', () => {
             if (filter.classList.contains('active')) {
-                if (getActiveFilters().length > 1) {
-                    filter.classList.remove('active');
-                }
+                filter.classList.remove('active');
             } else {
                 filter.classList.add('active');
             }
@@ -50,12 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getActiveFilters() {
         return filterElements.filter(filter => filter.classList.contains('active'));
-    }
-
-    function updateFiltersContainer() {
-        filtersContainer.innerHTML = '';
-        getActiveFilters().forEach(filter => filtersContainer.appendChild(filter));
-        filterElements.filter(filter => !filter.classList.contains('active')).forEach(filter => filtersContainer.appendChild(filter));
     }
 });
 
@@ -106,18 +98,21 @@ document.addEventListener('DOMContentLoaded', function filter() {
     ((appliedFilters.carbonated && drink.carbonated) || 
     (appliedFilters.notcarbonated && drink.notcarbonated)) && 
     ((appliedFilters.alcoholic && drink.alcoholic) || 
-    (appliedFilters.notalcoholic && drink.notalcoholic)) || showall == true);
+    (appliedFilters.notalcoholic && drink.notalcoholic)) || appliedFilters.showall == true && ((appliedFilters.small && drink.size === 1) || 
+    (appliedFilters.medium && drink.size === 2) || 
+    (appliedFilters.large && drink.size === 3)) && (appliedFilters.minlitres <= drink.litres && appliedFilters.maxlitres >= drink.litres) &&
+    (appliedFilters.minprice <= drink.price && appliedFilters.maxprice >= drink.price));
     
     // CARBONATED/ALCOHOLIC 0 = no; 1 = yes; 2 = both //
     // RELEVANCE, LITRES, PRICE, SIZE, CARBONATED, ALCOHOLIC, NOT CARBONATED, NOT ALCOHOLIC //
     let drinks = [ 
     
         new DrinkType(1, 1, 1, 1, true, true, true, true), // 100ml can (small)
-        new DrinkType(2, 2, 2, 1, true, false, true, true), // 250ml can (medium)
+        new DrinkType(2, 2, 2, 1, true, true, true, true), // 250ml can (medium)
         new DrinkType(3, 3, 3, 2, true, false, false, true), // 500ml can (large)
         
-        new DrinkType(4, 4, 4, 2, false, false, true, true), // 750ml water bottle
-        new DrinkType(5, 3, 3, 2, true, false, true, false), // 500ml bottle
+        new DrinkType(4, 4, 2, 2, false, false, true, true), // 750ml water bottle
+        new DrinkType(5, 3, 4, 2, true, false, true, false), // 500ml bottle
         new DrinkType(6, 3, 5, 2, true, false, false, true), // 500ml glass bottle
     
         new DrinkType(7, 5, 5, 3, true, false, true, true), // 1000ml bottle (small)
@@ -164,15 +159,26 @@ document.addEventListener('DOMContentLoaded', function filter() {
 
     renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
 
+    // FILTER BUTTONS
+    
     const showAllButton = document.getElementById('showall');
     const alcoholicFilterButton = document.getElementById('alcoholic');
     const carbonatedFilterButton = document.getElementById('carbonated');
+    const smallFilterButton = document.getElementById('small');
+    const mediumFilterButton = document.getElementById('medium');
+    const largeFilterButton = document.getElementById('large');
+    const minPriceSlider = document.getElementById('minprice');
+    const maxPriceSlider = document.getElementById('maxprice');
+    const minVolumeSlider = document.getElementById('minvolume');
+    const maxVolumeSlider = document.getElementById('maxvolume');
+    const resetPriceButton = document.getElementById('resetprice');
+    const resetVolumeButton = document.getElementById('resetvolume');
     
-    let previousFilters = { ...appliedFilters };
 
     // FIX THIS!
     function showAllClick() {
-        
+        appliedFilters.showall = !appliedFilters.showall
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     // WORKS
@@ -189,10 +195,73 @@ document.addEventListener('DOMContentLoaded', function filter() {
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
+    function smallFilterClick() {
+        appliedFilters.small = !appliedFilters.small
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function mediumFilterClick() {
+        appliedFilters.medium = !appliedFilters.medium
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function largeFilterClick() {
+        appliedFilters.large = !appliedFilters.large
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+    
+    function minPriceChanged() {
+        appliedFilters.minprice = minPriceSlider.value;
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function maxPriceChanged() {
+        appliedFilters.maxprice = maxPriceSlider.value
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function minVolumeChanged() {
+        appliedFilters.minlitres = minVolumeSlider.value;
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function maxVolumeChanged() {
+        appliedFilters.maxlitres = maxVolumeSlider.value;
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    function resetPrice() {
+        minPriceSlider.value = 1
+        maxPriceSlider.value = 11
+        appliedFilters.minprice = 1
+        appliedFilters.maxprice = 11
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+
+    
+    function resetVolume() {
+        minVolumeSlider.value = 1
+        maxVolumeSlider.value = 7
+        appliedFilters.minlitres = 1
+        appliedFilters.maxlitres = 7
+        renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
+    }
+    
+
+
     // Attach the appropriate click event handlers to each filter
     showAllButton.addEventListener('click', showAllClick);
     alcoholicFilterButton.addEventListener('click', alcoholicFilterClick);
     carbonatedFilterButton.addEventListener('click', carbonatedFilterClick);
+    smallFilterButton.addEventListener('click', smallFilterClick);
+    mediumFilterButton.addEventListener('click', mediumFilterClick);
+    largeFilterButton.addEventListener('click', largeFilterClick);
+    minPriceSlider.addEventListener('input', minPriceChanged);
+    maxPriceSlider.addEventListener('input', maxPriceChanged);
+    minVolumeSlider.addEventListener('input', minVolumeChanged);
+    maxVolumeSlider.addEventListener('input', maxVolumeChanged);
+    resetPriceButton.addEventListener('click', resetPrice);
+    resetVolumeButton.addEventListener('click', resetVolume);
 });
 
 // Get each filter element by its ID
