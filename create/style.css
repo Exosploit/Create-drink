@@ -109,7 +109,7 @@ body {
 
 .filter {
     background-color: rgb(243, 243, 243);
-    width: 12em;
+    width: fit-content;
     height: fit-content;
     border-radius: 10px;
     margin-right: 1em;

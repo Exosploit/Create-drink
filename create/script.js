@@ -175,11 +175,11 @@ document.addEventListener('DOMContentLoaded', function filter() {
     const resetVolumeButton = document.getElementById('resetvolume');
     const resetAllButton = document.getElementById('reset');
 
-    const rMaxPrice = "$2.99"
+    
     const rMinVolume = "100ml"
     const rMaxVolume = "2 litres"
     
-    function getMinPrice(appliedFilters) {
+    function getValues(minPriceSlider, maxPriceSlider) {
         const minPriceLookup = {
             1: "$0.19",
             2: "$0.39",
@@ -192,12 +192,25 @@ document.addEventListener('DOMContentLoaded', function filter() {
             9: "$2.39",
             10: "$2.99"
         };
+        const maxPriceLookup = {
+            1: "$0.19",
+            2: "$0.39",
+            3: "$0.49",
+            4: "$0.69",
+            5: "$1.19",
+            6: "$1.39",
+            7: "$1.59",
+            8: "$1.79",
+            9: "$2.39",
+            10: "$2.99"
+        };
     
-        return minPriceLookup[appliedFilters.minprice] || "default value";
+        return minPriceLookup[minPriceSlider] || "ERROR" && maxPriceLookup[maxPriceSlider] || "ERROR";
     }
 
-    const rMinPrice = getMinPrice(appliedFilters);
-    console.log(rMinPrice);
+    let rMinPrice = getValues(minPriceSlider.value);
+    let rMaxPrice = getValues(maxPriceSlider.value);
+
 
 
     function showAllClick() {
@@ -233,18 +246,22 @@ document.addEventListener('DOMContentLoaded', function filter() {
     }
     
     function minPriceChanged() {
+        rMinPrice = getValues(minPriceSlider.value); // Update rMinPrice with the new value
+        console.log(rMinPrice);
         appliedFilters.minprice = minPriceSlider.value;
-        document.getElementById("pricefrom").innerHTML = appliedFilters.price.value;
+        document.getElementById("pricefrom").innerHTML = rMinPrice; // Update the HTML element with the new rMinPrice value
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     function maxPriceChanged() {
+        rMaxPrice = getValues(maxPriceSlider.value); // Update rMinPrice with the new value
+        console.log(rMaxPrice);
         appliedFilters.maxprice = maxPriceSlider.value
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     function minVolumeChanged() {
-        getMinPrice()
+        getValues(minVolumeSlider.value)
         appliedFilters.minlitres = minVolumeSlider.value;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
