@@ -174,12 +174,10 @@ document.addEventListener('DOMContentLoaded', function filter() {
     const resetPriceButton = document.getElementById('resetprice');
     const resetVolumeButton = document.getElementById('resetvolume');
     const resetAllButton = document.getElementById('reset');
+    
+    // GET PRICE VALUES AND RETURN TO DISPLAY //
 
-    
-    const rMinVolume = "100ml"
-    const rMaxVolume = "2 litres"
-    
-    function getValues(minPriceSlider, maxPriceSlider) {
+    function getMinPrice(minPriceSlider) {
         const minPriceLookup = {
             1: "$0.19",
             2: "$0.39",
@@ -192,6 +190,12 @@ document.addEventListener('DOMContentLoaded', function filter() {
             9: "$2.39",
             10: "$2.99"
         };
+    
+        return minPriceLookup[minPriceSlider] || "ERROR"
+    }
+
+
+    function getMaxPrice(maxPriceSlider) {
         const maxPriceLookup = {
             1: "$0.19",
             2: "$0.39",
@@ -205,12 +209,45 @@ document.addEventListener('DOMContentLoaded', function filter() {
             10: "$2.99"
         };
     
-        return minPriceLookup[minPriceSlider] || "ERROR" && maxPriceLookup[maxPriceSlider] || "ERROR";
+        return maxPriceLookup[maxPriceSlider] || "ERROR"
     }
 
-    let rMinPrice = getValues(minPriceSlider.value);
-    let rMaxPrice = getValues(maxPriceSlider.value);
+    let rMinPrice = getMinPrice(minPriceSlider.value);
+    let rMaxPrice = getMaxPrice(maxPriceSlider.value);
 
+    // GET VOLUME VALUES AND RETURN TO DISPLAY //
+    
+    function getMinVolume(minVolumeSlider) {
+        const minVolumeLookup = {
+            1: "100ml",
+            2: "250ml",
+            3: "500ml",
+            4: "750ml",
+            5: "1 litre",
+            6: "1.5 litres",
+            7: "2 litres"
+        };
+    
+        return minVolumeLookup[minVolumeSlider] || "ERROR"
+    }
+
+
+    function getMaxVolume(maxVolumeSlider) {
+        const maxVolumeLookup = {
+            1: "100ml",
+            2: "250ml",
+            3: "500ml",
+            4: "750ml",
+            5: "1 litre",
+            6: "1.5 litres",
+            7: "2 litres"
+        };
+    
+        return maxVolumeLookup[maxVolumeSlider] || "ERROR"
+    }
+
+    let rMinVolume = getMinVolume(minVolumeSlider.value);
+    let rMaxVolume = getMaxVolume(maxVolumeSlider.value);
 
 
     function showAllClick() {
@@ -246,28 +283,34 @@ document.addEventListener('DOMContentLoaded', function filter() {
     }
     
     function minPriceChanged() {
-        rMinPrice = getValues(minPriceSlider.value); // Update rMinPrice with the new value
+        rMinPrice = getMinPrice(minPriceSlider.value);
         console.log(rMinPrice);
         appliedFilters.minprice = minPriceSlider.value;
-        document.getElementById("pricefrom").innerHTML = rMinPrice; // Update the HTML element with the new rMinPrice value
+        document.getElementById("pricefrom").innerHTML = rMinPrice;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     function maxPriceChanged() {
-        rMaxPrice = getValues(maxPriceSlider.value); // Update rMinPrice with the new value
+        rMaxPrice = getMaxPrice(maxPriceSlider.value);
         console.log(rMaxPrice);
         appliedFilters.maxprice = maxPriceSlider.value
+        document.getElementById("priceto").innerHTML = rMaxPrice;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     function minVolumeChanged() {
-        getValues(minVolumeSlider.value)
+        rMinVolume = getMinVolume(minVolumeSlider.value);
+        console.log(rMinVolume);
         appliedFilters.minlitres = minVolumeSlider.value;
+        document.getElementById("volumefrom").innerHTML = rMinVolume;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
     function maxVolumeChanged() {
+        rMaxVolume = getMaxVolume(maxVolumeSlider.value);
+        console.log(rMaxVolume);
         appliedFilters.maxlitres = maxVolumeSlider.value;
+        document.getElementById("volumeto").innerHTML = rMaxVolume;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
