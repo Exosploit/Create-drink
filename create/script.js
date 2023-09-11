@@ -315,8 +315,10 @@ document.addEventListener('DOMContentLoaded', function filter() {
         maxPriceSlider.value = 11
         appliedFilters.minprice = 1
         appliedFilters.maxprice = 11
-        getMinPrice(1)
-        getMaxPrice(7)
+        rMinPrice = getMinPrice(minPriceSlider.value);
+        rMaxPrice = getMaxPrice(maxPriceSlider.value);
+        document.getElementById("volumefrom").innerHTML = rMinVolume;
+        document.getElementById("volumeto").innerHTML = rMaxVolume;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
