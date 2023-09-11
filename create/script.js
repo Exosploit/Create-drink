@@ -317,8 +317,8 @@ document.addEventListener('DOMContentLoaded', function filter() {
         appliedFilters.maxprice = 11
         rMinPrice = getMinPrice(minPriceSlider.value);
         rMaxPrice = getMaxPrice(maxPriceSlider.value);
-        document.getElementById("volumefrom").innerHTML = rMinVolume;
-        document.getElementById("volumeto").innerHTML = rMaxVolume;
+        document.getElementById("pricefrom").innerHTML = rMinPrice;
+        document.getElementById("priceto").innerHTML = rMaxPrice;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
 
@@ -328,8 +328,10 @@ document.addEventListener('DOMContentLoaded', function filter() {
         maxVolumeSlider.value = 7
         appliedFilters.minlitres = 1
         appliedFilters.maxlitres = 7
-        getMinVolume(1)
-        getMaxVolume(7)
+        rMinVolume = getMinVolume(minVolumeSlider.value);
+        rMaxVolume = getMaxVolume(maxVolumeSlider.value);
+        document.getElementById("volumefrom").innerHTML = rMinVolume;
+        document.getElementById("volumeto").innerHTML = rMaxVolume;
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
     
@@ -366,10 +368,14 @@ document.addEventListener('DOMContentLoaded', function filter() {
         maxPriceSlider.value = 11
         minVolumeSlider.value = 1
         maxVolumeSlider.value = 7
-        getMinPrice(minPriceSlider.value)
-        getMaxPrice(maxPriceSlider.value)
-        getMinVolume(minVolumeSlider.value)
-        getMaxVolume(maxVolumeSlider.value)
+        rMinPrice = getMinPrice(minPriceSlider.value);
+        rMaxPrice = getMaxPrice(maxPriceSlider.value);
+        rMinVolume = getMinVolume(minVolumeSlider.value);
+        rMaxVolume = getMaxVolume(maxVolumeSlider.value);
+        document.getElementById("volumefrom").innerHTML = rMinVolume;
+        document.getElementById("volumeto").innerHTML = rMaxVolume;
+        document.getElementById("pricefrom").innerHTML = rMinPrice;
+        document.getElementById("priceto").innerHTML = rMaxPrice;
 
         renderDrinks(getFilteredDrinks(drinks, appliedFilters), getUnFilteredDrinks(drinks, appliedFilters))
     }
