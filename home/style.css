@@ -121,26 +121,6 @@ body {
     text-align: center;
 }
 
-.design a {
-    background: rgb(135,118,53);
-    border-radius: 6px;
-    font-size: 27px;
-    background: linear-gradient(90deg, rgb(187, 165, 78) 14%, rgba(255,237,137,1) 100%);
-    display: inline-block;
-    text-align: center;
-    padding: 0.5em 1em;
-    margin-top: 2em;
-    overflow: hidden;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.design a:hover {
-    background: linear-gradient(90deg, rgb(197, 175, 88) 14%, rgba(255,242,142,1) 100%);
-    transform: scale(1.02);
-    cursor: pointer;  
-}
-
 .slogan {
     font-size: 76px;
     font-weight: 600;
@@ -155,6 +135,21 @@ body {
     color: white;
     text-decoration: none;
     vertical-align: middle;
+    border-radius: 6px;
+    font-size: 27px;
+    background: linear-gradient(90deg, rgb(187, 165, 78) 14%, rgba(255,237,137,1) 100%);
+    display: inline-block;
+    text-align: center;
+    padding: 0.3em 1em 0.5em 1em;
+    margin-top: 2em;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.start a:hover {
+    background: linear-gradient(90deg, rgb(197, 175, 88) 14%, rgba(255,242,142,1) 100%);
+    transform: scale(1.02);
+    cursor: pointer;  
 }
 
 .preview {
