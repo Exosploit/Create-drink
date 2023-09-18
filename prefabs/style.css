@@ -75,7 +75,7 @@ body {
 
 .settings:hover i {
     cursor: pointer;
-    transform: translate(0px, -1px) rotate(118deg);
+    transform: translate(0px, 0px) rotate(120deg);
     color: #d3c67d;
 }
 

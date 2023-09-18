@@ -6,7 +6,7 @@
 * { border: 0px solid red; }
 
 body {
-   background-color: rgb(255, 255, 250); 
+   background-color: rgb(255, 255, 255); 
    margin: 0;
    padding: 0;
    font-family: 'Inter';
@@ -69,7 +69,7 @@ body {
 
 .settings:hover i {
     cursor: pointer;
-    transform: translate(0px, -1px) rotate(118deg);
+    transform: translate(0px, 0px) rotate(120deg);
     color: #d3c67d;
 }
 
@@ -106,16 +106,16 @@ body {
 }
 
 .filter {
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(248, 248, 248);
     width: fit-content;
     height: fit-content;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-right: 1em;
     text-align: left;
 }
 
 .filter .container{
-    margin: 2em 1.5em 1em 1.5em;
+    padding: 1.5em;
     font-size: 14px;
     font-weight: 600;
 }
@@ -235,7 +235,7 @@ body {
     flex-wrap: wrap;
     align-content: flex-start;
     align-items: left;
-    column-gap: 2px;
+    column-gap: 4px;
     row-gap: 3px;
 }
 
@@ -246,7 +246,7 @@ body {
     color: rgb(117, 117, 117);
     padding: 0.5em 0.5em 0.5em 0.5em;
     border: 2px solid #d3c67d;
-    border-radius: 25px;
+    border-radius: 6px;
     width: fit-content;
     background-color: transparent;
     cursor: pointer;
@@ -309,15 +309,15 @@ body {
 }
 
 .styles {
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(248, 248, 248);
     width: 12em;
     height: fit-content;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-left: 1em;
 }
 
 .styles .container{
-    margin: 1em;
+    padding: 1.2em;
     font-size: 14px;
     font-weight: 600;
     color: rgb(63, 63, 63);
@@ -325,7 +325,6 @@ body {
 
 .style-selector {
     text-align: left;
-    margin-top: 1em;
 }
 
 .style-container {
@@ -362,13 +361,15 @@ body {
     align-items: left;
     row-gap: 1em;
     column-gap: 0.5em;
-    overflow: hidden;
 }
 
 .drinks {
     width: 13em;
     height: 8em;
     border: 2px solid rgb(205, 205, 205);
+    box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.65);
+-webkit-box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.65);
+-moz-box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.65);
     border-radius: 3px;
     position: relative;
 }
