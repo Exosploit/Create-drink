@@ -227,10 +227,12 @@ body {
 
 .filters.active:hover {
     border: 2px solid #d37d7d;
+    background-color: #efcdcd;
 }
 
 .filters:hover {
     border: 2px solid #8bd37d;
+    background-color: #d5f0cf;
 }
 
 .filters-container-size {
